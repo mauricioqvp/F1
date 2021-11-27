@@ -54,6 +54,7 @@ public class TeamService {
 	@Transactional
 	public TeamDTO update(Long id, TeamDTO dto) {
 		try {
+			@SuppressWarnings("deprecation")
 			Team entity = repository.getOne(id);
 			copyDtoToEntity(dto, entity);
 			entity = repository.save(entity);
@@ -85,6 +86,7 @@ public class TeamService {
 
 		// entity.getCategories().clear();
 		for (PilotDTO catDto : dto.getPilots()) {
+			@SuppressWarnings("deprecation")
 			Pilot p = pilotRepository.getOne(catDto.getId());
 			entity.getPilots().add(p);
 		}
